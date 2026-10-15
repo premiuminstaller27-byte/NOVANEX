@@ -3,42 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | NOVANEX</title>
+  <meta name="theme-color" content="#050916">
+  <title>Start a Project | NOVANEX</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="index.html"><span class="brand-mark">N</span> NOVA<span>NEX</span></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav"><a href="index.html">Home</a><a href="services.html">Services</a><a class="active" href="contact.html">Contact</a></nav>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="contact.html">Project Requirements</a>
+      <a href="about.html">About</a>
+    </nav>
   </header>
+
   <main>
     <section class="page-hero contact-hero">
-      <img src="assets/novanex-dragon.svg" alt="Blue neon cyber dragon" class="page-dragon">
-      <p class="eyebrow">GET IN TOUCH</p>
-      <h1>Let's create <span>something great.</span></h1>
-      <p>Share your idea, ask about a service, or start a new project with NOVANEX.</p>
+      <img src="assets/novanex-dragon.svg" alt="NOVANEX neon dragon" class="page-dragon">
+      <p class="eyebrow">LET'S CREATE SOMETHING GREAT</p>
+      <h1>Tell us your <span>next big idea.</span></h1>
+      <p>Share your requirements below. We'll prepare your project message for WhatsApp.</p>
     </section>
-    <section class="contact-layout section">
+
+    <section class="section contact-layout">
       <div class="contact-info card">
-        <p class="eyebrow">START A CONVERSATION</p>
-        <h2>We'd love to hear your idea.</h2>
-        <p>Use the form to prepare an email with your project details. You can change the email address in this page's code before publishing.</p>
-        <div class="contact-detail"><span>✉</span><div><strong>Email</strong><p>Replace the placeholder email in the form code with your real business email.</p></div></div>
-        <div class="contact-detail"><span>⚡</span><div><strong>Project types</strong><p>Design, websites, thumbnails, and digital ideas.</p></div></div>
+        <p class="eyebrow">WELCOME TO NOVANEX</p>
+        <h2>Your idea. Our creativity.</h2>
+        <p>Tell us what you're planning, what features you need, and your budget. We'll discuss the details with you on WhatsApp.</p>
+
+        <div class="contact-detail">
+          <span>✦</span>
+          <div>
+            <strong>Affordable starting prices</strong>
+            <p>Choose from our creative services.</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span>⚡</span>
+          <div>
+            <strong>Personal project discussion</strong>
+            <p>Review your requirements with NOVANEX before confirming your project.</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span>↗</span>
+          <div>
+            <strong>Continue on WhatsApp</strong>
+            <p>Your filled-in details will be added to a message for you to review and send.</p>
+          </div>
+        </div>
       </div>
+
       <form class="contact-form card" id="contactForm">
-        <label for="name">Your name</label><input id="name" name="name" required placeholder="Enter your name">
-        <label for="email">Your email</label><input id="email" name="email" type="email" required placeholder="you@example.com">
-        <label for="service">What do you need?</label>
-        <select id="service" name="service"><option>Graphic Design</option><option>YouTube Thumbnail</option><option>Website Design</option><option>App or Digital Project</option><option>Something else</option></select>
-        <label for="message">Project details</label><textarea id="message" name="message" rows="5" required placeholder="Tell us a little about your idea..."></textarea>
-        <button class="button primary" type="submit">Prepare Email →</button>
-        <p class="form-note">This form opens your email app; it does not send messages directly from the website.</p>
+        <p class="eyebrow">PROJECT DETAILS</p>
+
+        <label for="name">Your name *</label>
+        <input id="name" name="name" required maxlength="100" placeholder="Enter your name">
+
+        <label for="contact">WhatsApp or email contact *</label>
+        <input id="contact" name="contact" required maxlength="150" placeholder="How can we contact you?">
+
+        <label for="service">Choose a service *</label>
+        <select id="service" name="service" required>
+          <option value="Website Creation">Website Creation — ₹200+</option>
+          <option value="Poster Design">Poster Design — ₹99+</option>
+          <option value="Logo Design">Logo Design — ₹199+</option>
+          <option value="Simple Android Apps">Simple Android Apps — ₹499+</option>
+          <option value="Other Project">Other Project</option>
+        </select>
+
+        <label for="purpose">What is this project for? *</label>
+        <input id="purpose" name="purpose" required maxlength="250" placeholder="For my business, YouTube, personal use...">
+
+        <label for="requirements">Features and project requirements *</label>
+        <textarea id="requirements" name="requirements" rows="5" required maxlength="3000" placeholder="Describe what you want us to create..."></textarea>
+
+        <label for="budget">Your budget</label>
+        <select id="budget" name="budget">
+          <option value="Not decided">Not decided yet</option>
+          <option value="Under ₹200">Under ₹200</option>
+          <option value="₹200–₹499">₹200–₹499</option>
+          <option value="₹500–₹999">₹500–₹999</option>
+          <option value="₹1000+">₹1000+</option>
+        </select>
+
+        <label for="deadline">When do you need it?</label>
+        <input id="deadline" name="deadline" placeholder="e.g. Within one week" maxlength="100">
+
+        <label for="reference">Reference link (optional)</label>
+        <input id="reference" name="reference" type="url" maxlength="500" placeholder="https://example.com">
+
+        <button class="button primary" type="submit">CONTACT ON WHATSAPP →</button>
+
+        <p class="form-note">Your WhatsApp message will open for review. You must press Send in WhatsApp to submit your enquiry.</p>
       </form>
     </section>
   </main>
-  <footer><a class="brand" href="index.html">NOVA<span>NEX</span></a><p>© 2026 NOVANEX. Creative energy. Digital future.</p></footer>
+
+  <footer>
+    <a class="brand" href="index.html">NOVA<span>NEX</span></a>
+    <p>© 2026 NOVANEX. Unleash your digital power.</p>
+  </footer>
+
+  <script>
+    const selectedService = new URLSearchParams(window.location.search).get("service");
+    const serviceSelect = document.querySelector("#service");
+
+    if (selectedService && serviceSelect) {
+      const option = Array.from(serviceSelect.options).find(
+        item => item.value.toLowerCase() === selectedService.toLowerCase()
+      );
+      if (option) serviceSelect.value = option.value;
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
