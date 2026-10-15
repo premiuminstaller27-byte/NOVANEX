@@ -1,125 +1,63 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050916">
-  <title>Start a Project | NOVANEX</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050816">
+    <title>Project Requirements | NOVANEX</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html"><span class="brand-mark">N</span> NOVA<span>NEX</span></a>
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a class="active" href="contact.html">Project Requirements</a>
-      <a href="about.html">About</a>
+
+<header class="site-header">
+    <a href="index.html" class="brand">NOVA<span>NEX</span></a>
+
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html" class="active">Project Requirements</a>
+        <a href="about.html">About</a>
     </nav>
-  </header>
+</header>
 
-  <main>
-    <section class="page-hero contact-hero">
-      <img src="assets/novanex-dragon.svg" alt="NOVANEX neon dragon" class="page-dragon">
-      <p class="eyebrow">LET'S CREATE SOMETHING GREAT</p>
-      <h1>Tell us your <span>next big idea.</span></h1>
-      <p>Share your requirements below. We'll prepare your project message for WhatsApp.</p>
+<main>
+    <section class="page-hero">
+        <p class="eyebrow">LET'S BUILD SOMETHING GREAT</p>
+        <h1>Tell Us Your <span>Requirements.</span></h1>
+        <p>Share your project details and send them directly to NOVANEX on WhatsApp.</p>
     </section>
 
-    <section class="section contact-layout">
-      <div class="contact-info card">
-        <p class="eyebrow">WELCOME TO NOVANEX</p>
-        <h2>Your idea. Our creativity.</h2>
-        <p>Tell us what you're planning, what features you need, and your budget. We'll discuss the details with you on WhatsApp.</p>
+    <section class="section form-section">
+        <form id="projectForm" class="project-form">
 
-        <div class="contact-detail">
-          <span>✦</span>
-          <div>
-            <strong>Affordable starting prices</strong>
-            <p>Choose from our creative services.</p>
-          </div>
-        </div>
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name"
+                       placeholder="Enter your name" required>
+            </div>
 
-        <div class="contact-detail">
-          <span>⚡</span>
-          <div>
-            <strong>Personal project discussion</strong>
-            <p>Review your requirements with NOVANEX before confirming your project.</p>
-          </div>
-        </div>
+            <div class="form-group">
+                <label for="service">Choose a Service *</label>
+                <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="Website Creation">Website Creation — ₹200+</option>
+                    <option value="Poster Creation">Poster Creation — ₹49+</option>
+                    <option value="Thumbnail Creation">Thumbnail Creation — ₹99+</option>
+                    <option value="Simple Android Apps">Simple Android Apps — ₹499+</option>
+                    <option value="Other">Other / Custom Project</option>
+                </select>
+            </div>
 
-        <div class="contact-detail">
-          <span>↗</span>
-          <div>
-            <strong>Continue on WhatsApp</strong>
-            <p>Your filled-in details will be added to a message for you to review and send.</p>
-          </div>
-        </div>
-      </div>
-
-      <form class="contact-form card" id="contactForm">
-        <p class="eyebrow">PROJECT DETAILS</p>
-
-        <label for="name">Your name *</label>
-        <input id="name" name="name" required maxlength="100" placeholder="Enter your name">
-
-        <label for="contact">WhatsApp or email contact *</label>
-        <input id="contact" name="contact" required maxlength="150" placeholder="How can we contact you?">
-
-        <label for="service">Choose a service *</label>
-        <select id="service" name="service" required>
-          <option value="Website Creation">Website Creation — ₹200+</option>
-          <option value="Poster Design">Poster Design — ₹99+</option>
-          <option value="Logo Design">Logo Design — ₹199+</option>
-          <option value="Simple Android Apps">Simple Android Apps — ₹499+</option>
-          <option value="Other Project">Other Project</option>
-        </select>
-
-        <label for="purpose">What is this project for? *</label>
-        <input id="purpose" name="purpose" required maxlength="250" placeholder="For my business, YouTube, personal use...">
-
-        <label for="requirements">Features and project requirements *</label>
-        <textarea id="requirements" name="requirements" rows="5" required maxlength="3000" placeholder="Describe what you want us to create..."></textarea>
-
-        <label for="budget">Your budget</label>
-        <select id="budget" name="budget">
-          <option value="Not decided">Not decided yet</option>
-          <option value="Under ₹200">Under ₹200</option>
-          <option value="₹200–₹499">₹200–₹499</option>
-          <option value="₹500–₹999">₹500–₹999</option>
-          <option value="₹1000+">₹1000+</option>
-        </select>
-
-        <label for="deadline">When do you need it?</label>
-        <input id="deadline" name="deadline" placeholder="e.g. Within one week" maxlength="100">
-
-        <label for="reference">Reference link (optional)</label>
-        <input id="reference" name="reference" type="url" maxlength="500" placeholder="https://example.com">
-
-        <button class="button primary" type="submit">CONTACT ON WHATSAPP →</button>
-
-        <p class="form-note">Your WhatsApp message will open for review. You must press Send in WhatsApp to submit your enquiry.</p>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <a class="brand" href="index.html">NOVA<span>NEX</span></a>
-    <p>© 2026 NOVANEX. Unleash your digital power.</p>
-  </footer>
-
-  <script>
-    const selectedService = new URLSearchParams(window.location.search).get("service");
-    const serviceSelect = document.querySelector("#service");
-
-    if (selectedService && serviceSelect) {
-      const option = Array.from(serviceSelect.options).find(
-        item => item.value.toLowerCase() === selectedService.toLowerCase()
-      );
-      if (option) serviceSelect.value = option.value;
-    }
-  </script>
-  <script src="script.js"></script>
-</body>
-</html>
+            <div class="form-group">
+                <label for="budget">Your Budget</label>
+                <select id="budget" name="budget">
+                    <option value="Not decided">Not decided yet</option>
+                    <option value="Under ₹100">Under ₹100</option>
+                    <option value="₹100–₹500">₹100–₹500</option>
+                    <option value="₹500–₹1000">₹500–₹1000</option>
+                    <option value="Above
