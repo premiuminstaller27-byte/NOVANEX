@@ -4,60 +4,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#050816">
+
     <title>Project Requirements | NOVANEX</title>
+
+    <meta name="description" content="Submit your project requirements to NOVANEX for website creation, poster design, thumbnail creation, and Android app development.">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="site-header">
-    <a href="index.html" class="brand">NOVA<span>NEX</span></a>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container nav-container">
 
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
-    </button>
+            <a href="index.html" class="logo">
+                NOVA<span>NEX</span>
+            </a>
 
-    <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html" class="active">Project Requirements</a>
-        <a href="about.html">About</a>
-    </nav>
-</header>
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">
+                ☰
+            </button>
 
-<main>
-    <section class="page-hero">
-        <p class="eyebrow">LET'S BUILD SOMETHING GREAT</p>
-        <h1>Tell Us Your <span>Requirements.</span></h1>
-        <p>Share your project details and send them directly to NOVANEX on WhatsApp.</p>
-    </section>
+            <nav class="nav" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html" class="active">Project Requirements</a>
+                <a href="about.html">About</a>
+            </nav>
 
-    <section class="section form-section">
-        <form id="projectForm" class="project-form">
+        </div>
+    </header>
 
-            <div class="form-group">
-                <label for="name">Your Name *</label>
-                <input type="text" id="name" name="name"
-                       placeholder="Enter your name" required>
+
+    <main>
+
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="container">
+
+                <p class="eyebrow">LET'S WORK TOGETHER</p>
+
+                <h1>Project <span>Requirements</span></h1>
+
+                <p>
+                    Tell us about your idea, your requirements,
+                    and what you want to create.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- PROJECT FORM -->
+        <section class="section contact-section">
+            <div class="container contact-container">
+
+                <div class="contact-info">
+
+                    <p class="eyebrow">START YOUR PROJECT</p>
+
+                    <h2>Let's Bring Your <span>Idea to Life.</span></h2>
+
+                    <p>
+                        Complete the form with as much detail as possible.
+                        When you submit it, WhatsApp will open with your
+                        project information ready to send.
+                    </p>
+
+                    <div class="contact-benefit">
+                        <span class="benefit-icon">✓</span>
+                        <div>
+                            <h3>Tell Us Your Idea</h3>
+                            <p>Describe what you want to create.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-benefit">
+                        <span class="benefit-icon">✓</span>
+                        <div>
+                            <h3>Choose Your Budget</h3>
+                            <p>Let us know your expected budget.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-benefit">
+                        <span class="benefit-icon">✓</span>
+                        <div>
+                            <h3>Discuss the Next Steps</h3>
+                            <p>Your submitted details will help start the discussion.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-form-wrapper">
+
+                    <form id="projectForm">
+
+                        <div class="form-heading">
+                            <h2>Project Details</h2>
+                            <p>Fields marked with * are required.</p>
+                        </div>
+
+
+                        <!-- NAME -->
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+
+                        <!-- SERVICE -->
+                        <div class="form-group">
+                            <label for="service">Select a Service *</label>
+
+                            <select id="service" name="service" required>
+                                <option value="">Choose a service</option>
+                                <option value="Website Creation">Website Creation</option>
+                                <option value="Poster Creation">Poster Creation</option>
+                                <option value="Thumbnail Creation">Thumbnail Creation</option>
+                                <option value="Simple Android Apps">Simple Android Apps</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+
+                        <!-- BUDGET -->
+                        <div class="form-group">
+                            <label for="budget">Your Budget *</label>
+
+                            <select id="budget" name="budget" required>
+                                <option value="">Select your budget</option>
+                                <option value="Under ₹500">Under ₹500</option>
+                                <option value="₹500 – ₹1,000">₹500 – ₹1,000</option>
+                                <option value="₹1,000 – ₹3,000">₹1,000 – ₹3,000</option>
+                                <option value="₹3,000 – ₹5,000">₹3,000 – ₹5,000</option>
+                                <option value="Above ₹5,000">Above ₹5,000</option>
+                                <option value="Need guidance">Need guidance</option>
+                            </select>
+                        </div>
+
+
+                        <!-- DEADLINE -->
+                        <div class="form-group">
+                            <label for="deadline">Expected Deadline *</label>
+
+                            <select id="deadline" name="deadline" required>
+                                <option value="">Select a deadline</option>
+                                <option value="As soon as possible">As soon as possible</option>
+                                <option value="Within 2–3 days">Within 2–3 days</option>
+                                <option value="Within one week">Within one week</option>
+                                <option value="Within two weeks">Within two weeks</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
+                        </div>
+
+
+                        <!-- PROJECT DETAILS -->
+                        <div class="form-group">
+                            <label for="details">Project Details *</label>
+
+                            <textarea
+                                id="details"
+                                name="details"
+                                rows="6"
+                                placeholder="Describe your project, preferred design, features, and other requirements..."
+                                required
+                            ></textarea>
+                        </div>
+
+
+                        <!-- SUBMIT -->
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            Submit via WhatsApp →
+                        </button>
+
+                        <p class="form-note">
+                            WhatsApp will open with your project details.
+                            Review the message and press Send to submit it.
+                        </p>
+
+                        <p id="formMessage" class="form-message" role="status"></p>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <a href="index.html" class="logo">
+                NOVA<span>NEX</span>
+            </a>
+
+            <p>Creative ideas. Digital solutions.</p>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Project Requirements</a>
+                <a href="about.html">About</a>
             </div>
 
-            <div class="form-group">
-                <label for="service">Choose a Service *</label>
-                <select id="service" name="service" required>
-                    <option value="">Select a service</option>
-                    <option value="Website Creation">Website Creation — ₹200+</option>
-                    <option value="Poster Creation">Poster Creation — ₹49+</option>
-                    <option value="Thumbnail Creation">Thumbnail Creation — ₹99+</option>
-                    <option value="Simple Android Apps">Simple Android Apps — ₹499+</option>
-                    <option value="Other">Other / Custom Project</option>
-                </select>
-            </div>
+            <p class="copyright">
+                © <span id="currentYear"></span> NOVANEX.
+                All rights reserved.
+            </p>
 
-            <div class="form-group">
-                <label for="budget">Your Budget</label>
-                <select id="budget" name="budget">
-                    <option value="Not decided">Not decided yet</option>
-                    <option value="Under ₹100">Under ₹100</option>
-                    <option value="₹100–₹500">₹100–₹500</option>
-                    <option value="₹500–₹1000">₹500–₹1000</option>
-                    <option value="Above
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
