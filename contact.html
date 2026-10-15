@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | NOVANEX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">N</span> NOVA<span>NEX</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav"><a href="index.html">Home</a><a href="services.html">Services</a><a class="active" href="contact.html">Contact</a></nav>
+  </header>
+  <main>
+    <section class="page-hero contact-hero">
+      <img src="assets/novanex-dragon.svg" alt="Blue neon cyber dragon" class="page-dragon">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h1>Let's create <span>something great.</span></h1>
+      <p>Share your idea, ask about a service, or start a new project with NOVANEX.</p>
+    </section>
+    <section class="contact-layout section">
+      <div class="contact-info card">
+        <p class="eyebrow">START A CONVERSATION</p>
+        <h2>We'd love to hear your idea.</h2>
+        <p>Use the form to prepare an email with your project details. You can change the email address in this page's code before publishing.</p>
+        <div class="contact-detail"><span>✉</span><div><strong>Email</strong><p>Replace the placeholder email in the form code with your real business email.</p></div></div>
+        <div class="contact-detail"><span>⚡</span><div><strong>Project types</strong><p>Design, websites, thumbnails, and digital ideas.</p></div></div>
+      </div>
+      <form class="contact-form card" id="contactForm">
+        <label for="name">Your name</label><input id="name" name="name" required placeholder="Enter your name">
+        <label for="email">Your email</label><input id="email" name="email" type="email" required placeholder="you@example.com">
+        <label for="service">What do you need?</label>
+        <select id="service" name="service"><option>Graphic Design</option><option>YouTube Thumbnail</option><option>Website Design</option><option>App or Digital Project</option><option>Something else</option></select>
+        <label for="message">Project details</label><textarea id="message" name="message" rows="5" required placeholder="Tell us a little about your idea..."></textarea>
+        <button class="button primary" type="submit">Prepare Email →</button>
+        <p class="form-note">This form opens your email app; it does not send messages directly from the website.</p>
+      </form>
+    </section>
+  </main>
+  <footer><a class="brand" href="index.html">NOVA<span>NEX</span></a><p>© 2026 NOVANEX. Creative energy. Digital future.</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
