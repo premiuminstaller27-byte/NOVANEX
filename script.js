@@ -1,129 +1,136 @@
 ```javascript
-/* ========================================
-   NOVANEX — WEBSITE FUNCTIONALITY
-   ======================================== */
+/* =========================================
+   NOVANEX — MAIN JAVASCRIPT
+========================================= */
 
-/*
-  IMPORTANT:
-  Replace the placeholder below with your WhatsApp number.
-  Include the country code, but do NOT include +, spaces, or dashes.
-  Example format for an Indian number: 91XXXXXXXXXX
-*/
+
+/* =========================================
+   WHATSAPP CONFIGURATION
+   Replace the placeholder with your number.
+
+   Example for India:
+   const WHATSAPP_NUMBER = "919876543210";
+
+   Use country code + number.
+   Do not use +, spaces, or hyphens.
+========================================= */
+
 const WHATSAPP_NUMBER = "YOUR_WHATSAPP_NUMBER_WITH_COUNTRY_CODE";
 
 
-/* MOBILE NAVIGATION */
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("open");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
 
-        menuToggle.setAttribute("aria-expanded", String(isOpen));
-        menuToggle.textContent = isOpen ? "✕" : "☰";
-    });
+    if (menuToggle && navMenu) {
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.textContent = "☰";
-        });
-    });
+        menuToggle.addEventListener("click", function () {
 
-    document.addEventListener("click", (event) => {
-        if (
-            !navLinks.contains(event.target) &&
-            !menuToggle.contains(event.target)
-        ) {
-            navLinks.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.textContent = "☰";
-        }
-    });
-}
+            const isOpen = navMenu.classList.toggle("open");
 
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
 
-/* AUTOMATIC FOOTER YEAR */
-
-document.querySelectorAll(".current-year").forEach((element) => {
-    element.textContent = new Date().getFullYear();
-});
-
-
-/* PRESELECT SERVICE FROM URL */
-
-const serviceSelect = document.querySelector("#service");
-
-if (serviceSelect) {
-    const params = new URLSearchParams(window.location.search);
-    const requestedService = params.get("service");
-
-    if (requestedService) {
-        const matchingOption = Array.from(serviceSelect.options).find(
-            (option) =>
-                option.value.toLowerCase() === requestedService.toLowerCase()
-        );
-
-        if (matchingOption) {
-            serviceSelect.value = matchingOption.value;
-        }
-    }
-}
-
-
-/* PROJECT REQUIREMENTS → WHATSAPP */
-
-const projectForm = document.querySelector("#projectForm");
-
-if (projectForm) {
-    projectForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        if (
-            !WHATSAPP_NUMBER ||
-            WHATSAPP_NUMBER === "YOUR_WHATSAPP_NUMBER_WITH_COUNTRY_CODE" ||
-            !/^\d+$/.test(WHATSAPP_NUMBER)
-        ) {
-            alert(
-                "The WhatsApp number has not been configured yet. " +
-                "Please contact the website owner."
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
             );
-            return;
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+        });
+
+
+        // Close the menu after selecting a navigation link.
+
+        const navLinks = navMenu.querySelectorAll("a");
+
+        navLinks.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navMenu.classList.remove("open");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
+                menuToggle.setAttribute("aria-label", "Open navigation");
+
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        // Close the menu when clicking outside it.
+
+        document.addEventListener("click", function (event) {
+
+            const clickedInsideMenu = navMenu.contains(event.target);
+            const clickedToggle = menuToggle.contains(event.target);
+
+            if (!clickedInsideMenu && !clickedToggle) {
+
+                navMenu.classList.remove("open");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
+                menuToggle.setAttribute("aria-label", "Open navigation");
+
+                menuToggle.textContent = "☰";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================================
+       AUTOMATIC COPYRIGHT YEAR
+    ========================================= */
+
+    const currentYear = document.getElementById("currentYear");
+
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
+
+
+    /* =========================================
+       AUTOMATIC SERVICE SELECTION
+       Example:
+       contact.html?service=Website%20Creation
+    ========================================= */
+
+    const serviceSelect = document.getElementById("service");
+
+    if (serviceSelect) {
+
+        const params = new URLSearchParams(window.location.search);
+
+        const requestedService = params.get("service");
+
+        if (requestedService) {
+
+            const matchingOption = Array.from(serviceSelect.options).find(
+                function (option) {
+                    return option.value.toLowerCase() ===
+                           requestedService.trim().toLowerCase();
+                }
+            );
+
+            if (matchingOption) {
+                serviceSelect.value = matchingOption.value;
+            }
+
         }
 
-        const name = document.querySelector("#name").value.trim();
-        const service = document.querySelector("#service").value;
-        const budget = document.querySelector("#budget").value;
-        const deadline = document.querySelector("#deadline").value.trim();
-        const details = document.querySelector("#details").value.trim();
+    }
 
-        if (!name || !service || !details) {
-            alert("Please fill in your name, service, and project details.");
-            return;
-        }
 
-        const message = [
-            "Hello NOVANEX! I'd like to discuss a project.",
-            "",
-            "*Name:* " + name,
-            "*Service:* " + service,
-            "*Budget:* " + budget,
-            "*Expected deadline:* " + (deadline || "Not specified"),
-            "",
-            "*Project details:*",
-            details
-        ].join("\n");
-
-        const whatsappURL =
-            "https://wa.me/" +
-            WHATSAPP_NUMBER +
-            "?text=" +
-            encodeURIComponent(message);
-
-        window.open(whatsappURL, "_blank", "noopener,noreferrer");
-    });
-}
-```
+    /* =========================================
