@@ -1,136 +1,97 @@
 ```javascript
-/* =========================================
-   NOVANEX — MAIN JAVASCRIPT
-========================================= */
+const WHATSAPP_NUMBER = "919042479227";
 
+// Mobile navigation
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-/* =========================================
-   WHATSAPP CONFIGURATION
-   Replace the placeholder with your number.
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+  });
 
-   Example for India:
-   const WHATSAPP_NUMBER = "919876543210";
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuToggle.classList.remove("active");
+    });
+  });
+}
 
-   Use country code + number.
-   Do not use +, spaces, or hyphens.
-========================================= */
+// Automatically update footer year
+const yearElement = document.querySelector("#year");
 
-const WHATSAPP_NUMBER = "YOUR_WHATSAPP_NUMBER_WITH_COUNTRY_CODE";
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
+// Select service from URL parameter
+const serviceSelect = document.querySelector("#service");
 
-/* =========================================
-   MOBILE NAVIGATION
-========================================= */
+if (serviceSelect) {
+  const params = new URLSearchParams(window.location.search);
+  const selectedService = params.get("service");
 
-document.addEventListener("DOMContentLoaded", function () {
+  if (selectedService) {
+    const matchingOption = Array.from(serviceSelect.options).find(
+      (option) =>
+        option.value.toLowerCase() === selectedService.toLowerCase() ||
+        option.textContent.toLowerCase() === selectedService.toLowerCase()
+    );
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
+    if (matchingOption) {
+      serviceSelect.value = matchingOption.value;
+    }
+  }
+}
 
-    if (menuToggle && navMenu) {
+// Project form: send details to WhatsApp
+const projectForm = document.querySelector("#project-form");
 
-        menuToggle.addEventListener("click", function () {
+if (projectForm) {
+  projectForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-            const isOpen = navMenu.classList.toggle("open");
+    const name = document.querySelector("#name")?.value.trim() || "";
+    const service = document.querySelector("#service")?.value || "";
+    const budget = document.querySelector("#budget")?.value || "";
+    const deadline = document.querySelector("#deadline")?.value || "";
+    const details = document.querySelector("#details")?.value.trim() || "";
 
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
-
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation" : "Open navigation"
-            );
-
-            menuToggle.textContent = isOpen ? "✕" : "☰";
-
-        });
-
-
-        // Close the menu after selecting a navigation link.
-
-        const navLinks = navMenu.querySelectorAll("a");
-
-        navLinks.forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                navMenu.classList.remove("open");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-
-                menuToggle.setAttribute("aria-label", "Open navigation");
-
-                menuToggle.textContent = "☰";
-
-            });
-
-        });
-
-
-        // Close the menu when clicking outside it.
-
-        document.addEventListener("click", function (event) {
-
-            const clickedInsideMenu = navMenu.contains(event.target);
-            const clickedToggle = menuToggle.contains(event.target);
-
-            if (!clickedInsideMenu && !clickedToggle) {
-
-                navMenu.classList.remove("open");
-
-                menuToggle.setAttribute("aria-expanded", "false");
-
-                menuToggle.setAttribute("aria-label", "Open navigation");
-
-                menuToggle.textContent = "☰";
-
-            }
-
-        });
-
+    if (!name || !service || !budget || !deadline || !details) {
+      alert("Bro, please fill in all project details.");
+      return;
     }
 
+    const message = [
+      "Hello NOVANEX! 👋",
+      "",
+      "I want to start a project.",
+      "",
+      `Name: ${name}`,
+      `Service: ${service}`,
+      `Budget: ${budget}`,
+      `Deadline: ${deadline}`,
+      "",
+      "Project Details:",
+      details,
+      "",
+      "Sent from the NOVANEX website."
+    ].join("\n");
 
-    /* =========================================
-       AUTOMATIC COPYRIGHT YEAR
-    ========================================= */
+    const whatsappURL =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    const currentYear = document.getElementById("currentYear");
+    const whatsappWindow = window.open(
+      whatsappURL,
+      "_blank",
+      "noopener,noreferrer"
+    );
 
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
+    if (!whatsappWindow) {
+      window.location.href = whatsappURL;
     }
-
-
-    /* =========================================
-       AUTOMATIC SERVICE SELECTION
-       Example:
-       contact.html?service=Website%20Creation
-    ========================================= */
-
-    const serviceSelect = document.getElementById("service");
-
-    if (serviceSelect) {
-
-        const params = new URLSearchParams(window.location.search);
-
-        const requestedService = params.get("service");
-
-        if (requestedService) {
-
-            const matchingOption = Array.from(serviceSelect.options).find(
-                function (option) {
-                    return option.value.toLowerCase() ===
-                           requestedService.trim().toLowerCase();
-                }
-            );
-
-            if (matchingOption) {
-                serviceSelect.value = matchingOption.value;
-            }
-
-        }
-
-    }
-
-
-    /* =========================================
+  });
+}
+```
